@@ -3,6 +3,9 @@
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
+bool is_window_split_active = false;
+uint16_t window_split_timer = 0;
+
 enum sofle_layers {
     /* _M_XYZ = Mac Os, _W_XYZ = Win/Linux */
     _QWERTY,
@@ -377,9 +380,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void matrix_scan_user(void) {
   if (is_alt_tab_active) {
-    if (timer_elapsed(alt_tab_timer) > 1250) {
+    if (timer_elapsed(alt_tab_timer) > 1000) {
       unregister_code(KC_LALT);
       is_alt_tab_active = false;
+    }
+  }
+
+  if (is_window_split_active) {
+    if (timer_elapsed(window_split_timer) > 1000) {
+      unregister_code(KC_GUI);
+      is_window_split_active = false;
     }
   }
 }
@@ -418,9 +428,19 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
      keyboards will only have two, so this piece of code will suffice. */
   } else if (index == 1) { /* Second encoder */
     if (clockwise) {
-      tap_code(KC_UP);
+      if (!is_window_split_active) {
+        is_window_split_active = true;
+        register_code(KC_GUI);
+      }
+      window_split_timer = timer_read();
+      tap_code16(KC_RGHT);
     } else {
-      tap_code(KC_DOWN);
+      if (!is_window_split_active) {
+        is_window_split_active = true;
+        register_code(KC_GUI);
+      }
+      window_split_timer = timer_read();
+      tap_code16(S(KC_LEFT));
     }
   }
   return false;
