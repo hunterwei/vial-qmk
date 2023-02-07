@@ -388,7 +388,7 @@ void matrix_scan_user(void) {
 
   if (is_window_split_active) {
     if (timer_elapsed(window_split_timer) > 1000) {
-      unregister_code(KC_GUI);
+      unregister_code(KC_LGUI);
       is_window_split_active = false;
     }
   }
@@ -430,14 +430,14 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     if (clockwise) {
       if (!is_window_split_active) {
         is_window_split_active = true;
-        register_code(KC_GUI);
+        register_code(KC_LGUI);
       }
       window_split_timer = timer_read();
       tap_code16(KC_RGHT);
     } else {
       if (!is_window_split_active) {
         is_window_split_active = true;
-        register_code(KC_GUI);
+        register_code(KC_LGUI);
       }
       window_split_timer = timer_read();
       tap_code16(S(KC_LEFT));
