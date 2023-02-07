@@ -440,7 +440,7 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         register_code(KC_LGUI);
       }
       window_split_timer = timer_read();
-      tap_code16(S(KC_LEFT));
+      tap_code16(KC_LEFT);
     }
   }
   return false;
