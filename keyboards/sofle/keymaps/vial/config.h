@@ -45,4 +45,7 @@
 #define CAPS_WORD_IDEL_TIMEOUT 3000
 
 // Adjust encoder resolution
-#define ENCODER_RESOLUTION 4
+#ifdef ENCODER_RESOLUTION
+    #undef ENCODER_RESOLUTION
+    #define ENCODER_RESOLUTION 4
+#endif
