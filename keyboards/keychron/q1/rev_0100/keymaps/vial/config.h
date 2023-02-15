@@ -7,3 +7,7 @@
 
 #define VIAL_UNLOCK_COMBO_ROWS { 0, 3 }
 #define VIAL_UNLOCK_COMBO_COLS { 0, 13 }
+
+// Disabled as Link Time Optimization does not support
+#define NO_ACTION_MACRO
+#define NO_ACTION_FUNCTION
