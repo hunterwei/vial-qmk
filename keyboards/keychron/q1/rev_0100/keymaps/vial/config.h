@@ -25,8 +25,8 @@
 #define TAPPING_FORCE_HOLD
 
 // Customize Caps Word
-#define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
-#define CAPS_WORD_IDEL_TIMEOUT 3000
+#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+#define CAPS_WORD_IDLE_TIMEOUT 3000
 
 // Customize Combos config
 #define COMBO_TERM 40
