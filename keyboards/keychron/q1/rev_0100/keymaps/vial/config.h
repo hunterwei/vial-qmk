@@ -27,3 +27,6 @@
 // Customize Caps Word
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
 #define CAPS_WORD_IDEL_TIMEOUT 3000
+
+// Customize Combos key timing
+#define COMBO_TERM 40
